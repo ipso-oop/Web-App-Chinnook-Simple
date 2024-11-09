@@ -55,10 +55,21 @@ jobs:
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
       - name: Run Snyk Code Scan for Security Issues
-        run: snyk code test --file=Chinook-Web-App.sln
+        run: snyk code test --file=Chinook-Web-App.sln --severity-threshold=medium
 
       - name: Run Snyk to check for vulnerabilities
         run: snyk test --file=Chinook-Web-App.sln
+
+
+  zap-basic-scan:
+   needs: build
+   runs-on: ubuntu-latest
+   
+   steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.13.0
+        with:
+          target: 'https://chinook-web-app-test.azurewebsites.net/'
 
 
  
