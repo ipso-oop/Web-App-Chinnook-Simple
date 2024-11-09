@@ -81,7 +81,6 @@ namespace Chinook_Web_App_New.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AlbumId,Title,ArtistId")] Album album)
         {
             if (ModelState.IsValid)
