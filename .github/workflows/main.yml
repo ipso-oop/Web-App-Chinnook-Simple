@@ -67,7 +67,7 @@ jobs:
    
    steps:
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.13.0
+        uses: zaproxy/action-baseline@v0.14.0
         with:
           target: 'https://chinook-web-app-test.azurewebsites.net/'
 
