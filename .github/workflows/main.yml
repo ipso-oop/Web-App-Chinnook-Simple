@@ -24,7 +24,7 @@ jobs:
         with:
           dotnet-version: '8.0' # Geben Sie Ihre .NET Framework Version an
 
-     # Set up MSBuild. This step might be optional as MSBuild is typically included in the windows-latest runner.
+     # Set up MSBuild. This step might be optional as MSBuild is typically included in the windows-latest runner
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1.0.2
   
