@@ -15,6 +15,7 @@ The purpose of this project is to demonstrate the use of ASP.NET MVC framework a
 - ASP.NET MVC framework for building the web application
 - Views for displaying data
 - Controllers for handling web requests
+- Demo for CSRF
 
 ## Setup and Run
 
