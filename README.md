@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Chinook Web App is a web application project that provides a simple interface for managing a music store database. The project includes various models such as `Album`, `Artist`, `Customer`, `Employee`, `Genre`, `Invoice`, `InvoiceLine`, `MediaType`, `Playlist`, and `Track`. The application allows users to perform CRUD (Create, Read, Update, Delete) operations on these models.
+The Chinook Web App is a web application project that provides a simple interface for managing a music store database. The project includes various models such as `Album`, `Artist`, `Customer`, `Employee`, `Genre`, `Invoice`, `InvoiceLine`, `MediaType`, `Playlist`, and `Track`. The application allows users to perform CRUD (Create, Read, Update, Delete) operations on these models.x
 
 ## Purpose
 
